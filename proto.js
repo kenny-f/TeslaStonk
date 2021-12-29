@@ -1,6 +1,9 @@
 const protobuf = require('protobufjs');
+const path = require('path');
 
-const root = protobuf.loadSync('./YPricingData.proto');
+const p = path.resolve('./YPricingData.proto');
+
+const root = protobuf.loadSync(p);
 
 const Yaticker = root.lookupType("yaticker");
 
