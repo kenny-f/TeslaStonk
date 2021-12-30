@@ -1,6 +1,5 @@
 const WebSocket = require('ws');
 const {Yaticker} = require('./proto');
-const {ipcRenderer} = require('electron');
 
 const createWs = (tray) => {
   const ws = new WebSocket('wss://streamer.finance.yahoo.com');
@@ -14,13 +13,13 @@ const createWs = (tray) => {
 
   ws.onclose = function close() {
     console.log('ws disconnected');
-    ipcRenderer.send('reconnect-ws')
+    tray.setTitle('disconnected ⚠️');
   };
 
   ws.onmessage = function incoming(data) {
     const message = Yaticker.decode(Buffer.from(data.data, 'base64'));
   
-    const { price, change, changePercent } = message;
+    const { price, changePercent } = message;
 
     const emoji = changePercent > 0 ? '🟢' : '🔴';
 
