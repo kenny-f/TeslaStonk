@@ -1,9 +1,7 @@
 const protobuf = require('protobufjs');
-const path = require('path');
+const yahooTicker = require('./yahooTicker.json');
 
-const p = path.resolve('./YPricingData.proto');
-
-const root = protobuf.loadSync(p);
+const root = protobuf.Root.fromJSON(yahooTicker);
 
 const Yaticker = root.lookupType("yaticker");
 

@@ -1,0 +1,178 @@
+{
+  "nested": {
+    "yaticker": {
+      "fields": {
+        "id": {
+          "type": "string",
+          "id": 1
+        },
+        "price": {
+          "type": "float",
+          "id": 2
+        },
+        "time": {
+          "type": "sint64",
+          "id": 3
+        },
+        "currency": {
+          "type": "string",
+          "id": 4
+        },
+        "exchange": {
+          "type": "string",
+          "id": 5
+        },
+        "quoteType": {
+          "type": "QuoteType",
+          "id": 6
+        },
+        "marketHours": {
+          "type": "MarketHoursType",
+          "id": 7
+        },
+        "changePercent": {
+          "type": "float",
+          "id": 8
+        },
+        "dayVolume": {
+          "type": "sint64",
+          "id": 9
+        },
+        "dayHigh": {
+          "type": "float",
+          "id": 10
+        },
+        "dayLow": {
+          "type": "float",
+          "id": 11
+        },
+        "change": {
+          "type": "float",
+          "id": 12
+        },
+        "shortName": {
+          "type": "string",
+          "id": 13
+        },
+        "expireDate": {
+          "type": "sint64",
+          "id": 14
+        },
+        "openPrice": {
+          "type": "float",
+          "id": 15
+        },
+        "previousClose": {
+          "type": "float",
+          "id": 16
+        },
+        "strikePrice": {
+          "type": "float",
+          "id": 17
+        },
+        "underlyingSymbol": {
+          "type": "string",
+          "id": 18
+        },
+        "openInterest": {
+          "type": "sint64",
+          "id": 19
+        },
+        "optionsType": {
+          "type": "OptionType",
+          "id": 20
+        },
+        "miniOption": {
+          "type": "sint64",
+          "id": 21
+        },
+        "lastSize": {
+          "type": "sint64",
+          "id": 22
+        },
+        "bid": {
+          "type": "float",
+          "id": 23
+        },
+        "bidSize": {
+          "type": "sint64",
+          "id": 24
+        },
+        "ask": {
+          "type": "float",
+          "id": 25
+        },
+        "askSize": {
+          "type": "sint64",
+          "id": 26
+        },
+        "priceHint": {
+          "type": "sint64",
+          "id": 27
+        },
+        "vol_24hr": {
+          "type": "sint64",
+          "id": 28
+        },
+        "volAllCurrencies": {
+          "type": "sint64",
+          "id": 29
+        },
+        "fromcurrency": {
+          "type": "string",
+          "id": 30
+        },
+        "lastMarket": {
+          "type": "string",
+          "id": 31
+        },
+        "circulatingSupply": {
+          "type": "double",
+          "id": 32
+        },
+        "marketcap": {
+          "type": "double",
+          "id": 33
+        }
+      },
+      "nested": {
+        "QuoteType": {
+          "values": {
+            "NONE": 0,
+            "ALTSYMBOL": 5,
+            "HEARTBEAT": 7,
+            "EQUITY": 8,
+            "INDEX": 9,
+            "MUTUALFUND": 11,
+            "MONEYMARKET": 12,
+            "OPTION": 13,
+            "CURRENCY": 14,
+            "WARRANT": 15,
+            "BOND": 17,
+            "FUTURE": 18,
+            "ETF": 20,
+            "COMMODITY": 23,
+            "ECNQUOTE": 28,
+            "CRYPTOCURRENCY": 41,
+            "INDICATOR": 42,
+            "INDUSTRY": 1000
+          }
+        },
+        "OptionType": {
+          "values": {
+            "CALL": 0,
+            "PUT": 1
+          }
+        },
+        "MarketHoursType": {
+          "values": {
+            "PRE_MARKET": 0,
+            "REGULAR_MARKET": 1,
+            "POST_MARKET": 2,
+            "EXTENDED_HOURS_MARKET": 3
+          }
+        }
+      }
+    }
+  }
+}
