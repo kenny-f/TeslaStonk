@@ -20,6 +20,7 @@ const browserWindowOptions = {
     nodeIntegration: true,
     contextIsolation: false,
   },
+  height: 500,
   ...debugOptions,
 }
 
