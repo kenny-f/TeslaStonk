@@ -47,6 +47,10 @@ mb.on('ready', () => {
   });
 });
 
-if (isDebug) {
-  mb.on('after-create-window', () => { mb.window.openDevTools() })
-}
+// mb.on('after-create-window', () => { 
+//   console.log('after create')
+// })
+
+// mb.on('after-show', () => { 
+//   console.log('after show')
+// })
