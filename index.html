@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
-  <link href="http://fonts.cdnfonts.com/css/gotham-book" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/gotham-book" rel="stylesheet">
                 
   <style>
     /* RESET - START */
@@ -82,6 +82,14 @@
       justify-content: space-between;
       margin-bottom: 16px;
     }
+
+    #financials {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 16px;
+      /* grid-template-rows: 1fr 1fr; */
+    }
   </style>
 </head>
 
@@ -91,7 +99,32 @@
     <button id="resume">Resume</button>
     <button id="reconnect">Reconnect</button>
   </div>
-  <div id="chart" />
+  <div>
+    <div id="chart"></div>
+  </div>
+
+  <div id="financials">
+    <div>Previous Close</div>
+    <div id="pc-value"></div>
+    
+    <div>Open</div>
+    <div id="open-value"></div>
+
+    <div>Day's Range</div>
+    <div id="day-range-value"></div>
+    
+    <div>52 Week Range</div>
+    <div id="year-range-value"></div>
+    
+    <div>Volume</div>
+    <div id="volume-value"></div>
+    
+    <div>Avg. Daily Volume (3M)</div>
+    <div id="avg-volume-value"></div>
+    
+    <div>Market Cap</div>
+    <div id="market-cap-value"></div>
+  </div>
 </body>
 
 <script src="./src/index.js"></script>
