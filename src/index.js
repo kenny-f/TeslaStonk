@@ -63,6 +63,19 @@ const getChartData = async () => {
           return value.toFixed(2)
         }
       }
+    },
+    annotations: {
+      yaxis: [{
+        y: previousClose,
+        borderColor: '#7D02EB',
+        label: {
+          borderColor: '#7D02EB',
+          style: {
+            color: '#fff',
+            background: '#7D02EB',
+          },
+        }
+      }],
     }
   }
   
