@@ -1,66 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tesla Stonk</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
-  </head>
 
-  <body>
-    <div id="root"></div>
+<head>
+  <title>Tesla Stonk</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
+</head>
+
+<body>
+  <div class="btn-container">
     <button id="pause">Pause</button>
     <button id="resume">Resume</button>
     <button id="reconnect">Reconnect</button>
-  </body>
+  </div>
+</body>
 
-  <script src="./src/index.js"></script>
+<script src="./src/index.js"></script>
 
-  <style>
-    html,
-    body {
-      height: 100%;
-      -webkit-user-select: none;
-    }
+<style>
+  /* RESET - START */
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
-      margin: 0;
-      cursor: default;
-    }
+  /* Box sizing rules */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-    #gitify {
-      height: 100%;
-    }
+  /* Remove default margin */
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+  }
 
-    .notification-exit {
-      transform: translate3d(0px, 0, 0);
-      opacity: 1;
-      transition-duration: 250ms;
-      transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear;
-    }
+  /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+  ul[role='list'],
+  ol[role='list'] {
+    list-style: none;
+  }
 
-    .notification-exit.notification-exit-active {
-      transform: translate3d(350px, 0, 0);
-      opacity: 0;
-    }
+  /* Inherit fonts for inputs and buttons */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
 
-    #nprogress {
-      pointer-events: none;
-    }
+  /* RESET - END */
 
-    #nprogress .bar {
-      position: fixed;
-      top: 0;
-      left: 50px;
-      z-index: 1031;
-      background: #203354;
+  html,
+  body {
+    height: 100%;
+    -webkit-user-select: none;
+  }
 
-      width: 100%;
-      height: 2px;
-    }
-  </style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+      'Helvetica Neue', sans-serif;
+    margin: 10px;
+    cursor: default;
+  }
+
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+
+    outline: 1px solid rgb(92, 94, 98);
+    padding: 8px;
+    border-radius: 100px;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+
 </html>
