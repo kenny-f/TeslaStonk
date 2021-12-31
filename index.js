@@ -20,7 +20,7 @@ const browserWindowOptions = {
     nodeIntegration: true,
     contextIsolation: false,
   },
-  height: 500,
+  height: 550,
   ...debugOptions,
 }
 
@@ -34,7 +34,7 @@ mb.on('ready', () => {
 
   ipcMain.on('pause-ws', () => {
     ws.pause();
-    mb.tray.setTitle('');
+    mb.tray.setTitle('paused');
   });
 
   ipcMain.on('resume-ws', () => {
@@ -47,10 +47,10 @@ mb.on('ready', () => {
   });
 });
 
-// mb.on('after-create-window', () => { 
+// mb.on('after-create-window', async () => { 
 //   console.log('after create')
 // })
 
-// mb.on('after-show', () => { 
-//   console.log('after show')
-// })
+mb.on('after-show', async () => {
+  mb.window.send('render-data')
+})
