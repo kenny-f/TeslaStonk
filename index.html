@@ -7,7 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
-  <link href="https://fonts.cdnfonts.com/css/gotham-book" rel="stylesheet">
+  <link href="https://cdn-design.tesla.com/tds-fonts/3.x/woff2/GothamSSm-Book_Web.woff2" rel="preload" type="font/woff2">
+  <link href="https://cdn-design.tesla.com/tds-fonts/3.x/woff2/GothamSSm-Medium_Web.woff2" rel="preload" type="font/woff2">
                 
   <style>
     /* RESET - START */
@@ -56,7 +57,7 @@
     }
   
     body {
-      font-family: 'Gotham Book', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      font-family: 'Gotham Medium', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
         'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
         'Helvetica Neue', sans-serif;
       margin: 10px;
@@ -85,10 +86,24 @@
 
     #financials {
       margin-top: 16px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      row-gap: 16px;
-      /* grid-template-rows: 1fr 1fr; */
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .f-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+
+    .f-row:nth-child(even) {
+      background-color: rgb(241, 240, 240);
     }
   </style>
 </head>
@@ -104,26 +119,40 @@
   </div>
 
   <div id="financials">
-    <div>Previous Close</div>
-    <div id="pc-value"></div>
+    <div class="f-row">
+      <div>Previous Close</div>
+      <div id="pc-value"></div>
+    </div>
     
-    <div>Open</div>
-    <div id="open-value"></div>
+    <div class="f-row">
+      <div>Open</div>
+      <div id="open-value"></div>
+    </div>
 
-    <div>Day's Range</div>
-    <div id="day-range-value"></div>
+    <div class="f-row">
+      <div>Day's Range</div>
+      <div id="day-range-value"></div>
+    </div>
+
+    <div class="f-row">
+      <div>52 Week Range</div>
+      <div id="year-range-value"></div>
+    </div>
     
-    <div>52 Week Range</div>
-    <div id="year-range-value"></div>
+    <div class="f-row">
+      <div>Volume</div>
+      <div id="volume-value"></div>
+    </div>
     
-    <div>Volume</div>
-    <div id="volume-value"></div>
+    <div class="f-row">
+      <div>Avg. Daily Volume (3M)</div>
+      <div id="avg-volume-value"></div>
+    </div>
     
-    <div>Avg. Daily Volume (3M)</div>
-    <div id="avg-volume-value"></div>
-    
-    <div>Market Cap</div>
-    <div id="market-cap-value"></div>
+    <div class="f-row">
+      <div>Market Cap</div>
+      <div id="market-cap-value"></div>
+    </div>
   </div>
 </body>
 
