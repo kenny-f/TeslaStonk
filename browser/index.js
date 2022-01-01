@@ -1,5 +1,5 @@
-const { renderChart } = require('./src/chart');
-const { renderFinancials } = require('./src/financials');
+const { renderChart } = require('./browser/chart');
+const { renderFinancials } = require('./browser/financials');
 const {ipcRenderer} = require('electron');
 
 const dayjs = require('dayjs');
