@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { currencyFormat, rangeFormat, numberFormat } = require('./formatters');
 
 const getFinancialData = async () => {
   const { data } = await axios.get('https://query1.finance.yahoo.com/v7/finance/quote?symbols=TSLA');
@@ -8,10 +9,6 @@ const getFinancialData = async () => {
 
 const renderFinancials = async () => {
   const f = await getFinancialData();
-
-  const numberFormat = Intl.NumberFormat('en-US').format;
-  const currencyFormat = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format;
-  const rangeFormat = (str) => str.split('-').filter(Boolean).map(n => currencyFormat(Number(n))).join('-');
 
   const map = [
     { id: 'pc-value', key: 'regularMarketPreviousClose', fmt: currencyFormat },

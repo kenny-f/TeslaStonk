@@ -1,6 +1,7 @@
 const { renderChart } = require('./browser/chart');
 const { renderFinancials } = require('./browser/financials');
-const {ipcRenderer} = require('electron');
+const { renderExchangeData } = require('./browser/exchanges');
+const { ipcRenderer } = require('electron');
 
 const dayjs = require('dayjs');
 const utcPlugin = require('dayjs/plugin/utc');
@@ -22,6 +23,7 @@ document.getElementById('reconnect').onclick = () => {
 }
 
 ipcRenderer.on('render-data', async () => {
+  await renderExchangeData();
   await renderChart();
   await renderFinancials();
 })
