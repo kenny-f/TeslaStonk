@@ -14,10 +14,12 @@ const getChartData = async () => {
   return data;
 }
 
+const formatLocalTime = (timestamp, timezone) => dayjs.tz(timestamp * 1000, timezone).tz('GMT').format('HH:mm')
+
 const renderChart = async () => {
   const data = await getChartData();
-  const {meta, timestamp, indicators} = data.chart.result[0];
-  const {timezone, previousClose, regularMarketPrice} = meta;
+  const { meta, timestamp, indicators } = data.chart.result[0];
+  const { currentTradingPeriod, timezone, previousClose, regularMarketPrice } = meta;
 
   const isGreen = regularMarketPrice > previousClose;
 
@@ -30,7 +32,7 @@ const renderChart = async () => {
       width: 1,
       curve: 'straight',
     },
-    colors: [isGreen? '#00873c': '#eb0f29'],
+    colors: [isGreen ? '#00873c' : '#eb0f29'],
     series: [{
       data: open
     }],
@@ -38,7 +40,7 @@ const renderChart = async () => {
       type: 'datetime',
       categories: timestamp,
       labels: {
-        formatter: function(value) {
+        formatter: function (value) {
           const date = dayjs.tz(value * 1000, timezone).format('HH:mm')
           return date
         }
@@ -46,7 +48,7 @@ const renderChart = async () => {
     },
     yaxis: {
       labels: {
-        formatter: function(value) {
+        formatter: function (value) {
           return value.toFixed(2)
         }
       }
@@ -65,10 +67,14 @@ const renderChart = async () => {
       }],
     }
   }
-  
+
   var chart = new ApexCharts(document.querySelector("#chart"), options);
-  
+
   chart.render();
+
+  const mt = document.getElementById('market-time');
+  const { regular: { start, end } } = currentTradingPeriod;
+  mt.innerText = `Market Hours: ${formatLocalTime(start, timezone)} - ${formatLocalTime(end, timezone)}`
 };
 
 module.exports = { renderChart }
