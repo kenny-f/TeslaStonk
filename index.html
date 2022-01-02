@@ -7,8 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
-  <link href="https://cdn-design.tesla.com/tds-fonts/3.x/woff2/GothamSSm-Book_Web.woff2" rel="preload" type="font/woff2">
-  <link href="https://cdn-design.tesla.com/tds-fonts/3.x/woff2/GothamSSm-Medium_Web.woff2" rel="preload" type="font/woff2">
+  <link href="https://cdn-design.tesla.com/tds-fonts/3.x/woff2/GothamSSm-Book_Web.woff2" rel="preload"
+    type="font/woff2">
+  <link href="https://cdn-design.tesla.com/tds-fonts/3.x/woff2/GothamSSm-Medium_Web.woff2" rel="preload"
+    type="font/woff2">
   <link rel="stylesheet" href="css/reset.css">
   <style>
     html,
@@ -16,7 +18,7 @@
       height: 100%;
       -webkit-user-select: none;
     }
-  
+
     body {
       font-family: 'Gotham Medium', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
         'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
@@ -24,21 +26,17 @@
       margin: 10px;
       cursor: default;
     }
-  
-    button {
-      background: none;
-      color: inherit;
-      border: none;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
-  
+
+    .btn {
       outline: 1px solid rgb(92, 94, 98);
       padding: 8px;
       border-radius: 100px;
     }
-  
+
+    .btn:hover {
+      outline: 2px solid rgb(92, 94, 98);
+    }
+
     .btn-container {
       display: flex;
       justify-content: space-between;
@@ -78,9 +76,7 @@
       justify-content: space-between;
     }
 
-    .ex-container {
-
-    }
+    .ex-container {}
 
     .ex-name {
       font-weight: bold;
@@ -109,14 +105,18 @@
 </head>
 
 <body>
-  <svg class="tesla-logo" viewBox="0 0 342 35" xmlns="http://www.w3.org/2000/svg"><path d="M0 .1a9.7 9.7 0 007 7h11l.5.1v27.6h6.8V7.3L26 7h11a9.8 9.8 0 007-7H0zm238.6 0h-6.8v34.8H263a9.7 9.7 0 006-6.8h-30.3V0zm-52.3 6.8c3.6-1 6.6-3.8 7.4-6.9l-38.1.1v20.6h31.1v7.2h-24.4a13.6 13.6 0 00-8.7 7h39.9v-21h-31.2v-7h24zm116.2 28h6.7v-14h24.6v14h6.7v-21h-38zM85.3 7h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zm0 13.8h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zm0 14.1h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zM308.5 7h26a9.6 9.6 0 007-7h-40a9.6 9.6 0 007 7z" fill="#181b21"></path></svg>
+  <svg class="tesla-logo" viewBox="0 0 342 35" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M0 .1a9.7 9.7 0 007 7h11l.5.1v27.6h6.8V7.3L26 7h11a9.8 9.8 0 007-7H0zm238.6 0h-6.8v34.8H263a9.7 9.7 0 006-6.8h-30.3V0zm-52.3 6.8c3.6-1 6.6-3.8 7.4-6.9l-38.1.1v20.6h31.1v7.2h-24.4a13.6 13.6 0 00-8.7 7h39.9v-21h-31.2v-7h24zm116.2 28h6.7v-14h24.6v14h6.7v-21h-38zM85.3 7h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zm0 13.8h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zm0 14.1h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zM308.5 7h26a9.6 9.6 0 007-7h-40a9.6 9.6 0 007 7z"
+      fill="#181b21"></path>
+  </svg>
 
   <div id="market-time"></div>
-  
+
   <div class="btn-container">
-    <button id="pause">Pause</button>
-    <button id="resume">Resume</button>
-    <button id="reconnect">Reconnect</button>
+    <button id="pause" class="btn">Pause</button>
+    <button id="resume" class="btn">Resume</button>
+    <button id="reconnect" class="btn">Reconnect</button>
   </div>
 
   <div id="exchanges"></div>
@@ -130,7 +130,7 @@
       <div>Previous Close</div>
       <div id="pc-value"></div>
     </div>
-    
+
     <div class="f-row">
       <div>Open</div>
       <div id="open-value"></div>
@@ -145,17 +145,17 @@
       <div>52 Week Range</div>
       <div id="year-range-value"></div>
     </div>
-    
+
     <div class="f-row">
       <div>Volume</div>
       <div id="volume-value"></div>
     </div>
-    
+
     <div class="f-row">
       <div>Avg. Daily Volume (3M)</div>
       <div id="avg-volume-value"></div>
     </div>
-    
+
     <div class="f-row">
       <div>Market Cap</div>
       <div id="market-cap-value"></div>
