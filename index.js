@@ -1,6 +1,6 @@
 const { menubar } = require('menubar');
 const path = require('path');
-const { ipcMain } = require('electron');
+const { ipcMain, powerMonitor } = require('electron');
 const { createWs } = require('./ws');
 
 const isDebug = process.env.DEBUG;
@@ -20,7 +20,7 @@ const browserWindowOptions = {
     nodeIntegration: true,
     contextIsolation: false,
   },
-  height: 650,
+  height: 750,
   ...debugOptions,
 }
 
@@ -45,6 +45,15 @@ mb.on('ready', () => {
     ws.terminate();
     ws = createWs(mb.tray);
   });
+  
+  powerMonitor.on('suspend', () => {
+    ws.terminate();
+  })
+  
+  powerMonitor.on('resume', () => {
+    console.log('resume')
+    ws = createWs(mb.tray);
+  })
 });
 
 // mb.on('after-create-window', async () => { 
