@@ -45,11 +45,9 @@ const renderExchangeData = async () => {
       changeDiv.classList.add('negative')
     }
 
-    containerDiv.appendChild(nameDiv)
-    containerDiv.appendChild(priceDiv)
-    containerDiv.appendChild(changeDiv)
+    containerDiv.append(nameDiv, priceDiv, changeDiv);
 
-    exhangesDiv.appendChild(containerDiv)
+    exhangesDiv.append(containerDiv)
   })
 }
 
