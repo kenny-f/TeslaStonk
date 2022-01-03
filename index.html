@@ -101,6 +101,15 @@
       height: 14px;
       margin-bottom: 4px;
     }
+
+    #pm {
+      display: none;
+    }
+
+    #pm-change, #pm-change-percent {
+      font-size: 14px;
+      color: #00873c;
+    }
   </style>
 </head>
 
@@ -123,6 +132,15 @@
 
   <div>
     <div id="chart"></div>
+  </div>
+
+  <div id=pm>
+    <div>Pre-Market:</div>
+    <span>
+      <span id="pm-price"></span>
+      <span id="pm-change"></span>
+      <span id="pm-change-percent"></span>
+    </span>
   </div>
 
   <div id="financials">
