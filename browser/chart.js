@@ -34,11 +34,11 @@ const renderChart = async () => {
     },
     colors: [isGreen ? '#00873c' : '#eb0f29'],
     series: [{
-      data: open
+      data: open.filter(o => o !== null)
     }],
     xaxis: {
       type: 'datetime',
-      categories: timestamp,
+      categories: timestamp.filter(t => t !== null),
       labels: {
         formatter: function (value) {
           const date = dayjs.tz(value * 1000, timezone).format('HH:mm')
