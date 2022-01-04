@@ -27,10 +27,19 @@
       cursor: default;
     }
 
+    #top-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
     .btn {
       outline: 1px solid rgb(92, 94, 98);
-      padding: 8px;
+      padding: 4px;
       border-radius: 100px;
+      font-size: 14px;
     }
 
     .btn:hover {
@@ -40,7 +49,7 @@
     .btn-container {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 16px;
+      gap: 8px;
     }
 
     #financials {
@@ -66,7 +75,6 @@
     }
 
     #market-time {
-      margin-bottom: 12px;
       font-size: 12px;
     }
 
@@ -96,7 +104,7 @@
     .negative {
       color: #eb0f29;
     }
-    
+
     .positive {
       color: #00873c;
     }
@@ -110,25 +118,30 @@
       display: none;
     }
 
-    #pm-change, #pm-change-percent {
+    #pm-change,
+    #pm-change-percent {
       font-size: 14px;
     }
   </style>
 </head>
 
 <body>
-  <svg class="tesla-logo" viewBox="0 0 342 35" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M0 .1a9.7 9.7 0 007 7h11l.5.1v27.6h6.8V7.3L26 7h11a9.8 9.8 0 007-7H0zm238.6 0h-6.8v34.8H263a9.7 9.7 0 006-6.8h-30.3V0zm-52.3 6.8c3.6-1 6.6-3.8 7.4-6.9l-38.1.1v20.6h31.1v7.2h-24.4a13.6 13.6 0 00-8.7 7h39.9v-21h-31.2v-7h24zm116.2 28h6.7v-14h24.6v14h6.7v-21h-38zM85.3 7h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zm0 13.8h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zm0 14.1h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zM308.5 7h26a9.6 9.6 0 007-7h-40a9.6 9.6 0 007 7z"
-      fill="#181b21"></path>
-  </svg>
+  <div id=top-container>
+    <div id="top-left">
+      <svg class="tesla-logo" viewBox="0 0 342 35" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0 .1a9.7 9.7 0 007 7h11l.5.1v27.6h6.8V7.3L26 7h11a9.8 9.8 0 007-7H0zm238.6 0h-6.8v34.8H263a9.7 9.7 0 006-6.8h-30.3V0zm-52.3 6.8c3.6-1 6.6-3.8 7.4-6.9l-38.1.1v20.6h31.1v7.2h-24.4a13.6 13.6 0 00-8.7 7h39.9v-21h-31.2v-7h24zm116.2 28h6.7v-14h24.6v14h6.7v-21h-38zM85.3 7h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zm0 13.8h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zm0 14.1h26a9.6 9.6 0 007.1-7H78.3a9.6 9.6 0 007 7zM308.5 7h26a9.6 9.6 0 007-7h-40a9.6 9.6 0 007 7z"
+          fill="#181b21"></path>
+      </svg>
 
-  <div id="market-time"></div>
+      <div id="market-time"></div>
+    </div>
 
-  <div class="btn-container">
-    <button id="pause" class="btn">Pause</button>
-    <button id="resume" class="btn">Resume</button>
-    <button id="reconnect" class="btn">Reconnect</button>
+    <div class="btn-container">
+      <button id="pause" class="btn">Pause</button>
+      <button id="resume" class="btn">Resume</button>
+      <button id="reconnect" class="btn">Reconnect</button>
+    </div>
   </div>
 
   <div id="exchanges"></div>

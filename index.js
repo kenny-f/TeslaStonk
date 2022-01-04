@@ -8,8 +8,6 @@ const isDebug = process.env.DEBUG;
 const debugOptions = isDebug
   ? {
     alwaysOnTop: true,
-    width: 1000,
-    height: 1500,
   }
   : {}
 
