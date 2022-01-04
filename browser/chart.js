@@ -27,6 +27,9 @@ const renderChart = async () => {
   var options = {
     chart: {
       type: 'line',
+      animations: {
+        enabled: false,
+      }
     },
     stroke: {
       width: 1,
