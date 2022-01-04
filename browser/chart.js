@@ -69,7 +69,15 @@ const renderChart = async () => {
           },
         }
       }],
-    }
+    },
+    tooltip: {
+      x: { show: false },
+      y: {
+        formatter: (value) => `$${value.toFixed(2)}`,
+        title: { formatter: () => '' },
+      },
+      marker: { show: false },
+    },
   }
 
   var chart = new ApexCharts(document.querySelector("#chart"), options);
