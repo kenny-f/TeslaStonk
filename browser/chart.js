@@ -5,8 +5,8 @@ const dayjs = require('dayjs');
 const utcPlugin = require('dayjs/plugin/utc');
 const timezonePlugin = require('dayjs/plugin/timezone');
 
-dayjs.extend(utcPlugin)
-dayjs.extend(timezonePlugin)
+dayjs.extend(utcPlugin);
+dayjs.extend(timezonePlugin);
 
 const getChartData = async () => {
   const { data } = await axios.get('https://query1.finance.yahoo.com/v8/finance/chart/TSLA');
@@ -14,7 +14,7 @@ const getChartData = async () => {
   return data;
 }
 
-const formatLocalTime = (timestamp, timezone) => dayjs.tz(timestamp * 1000, timezone).tz('GMT').format('HH:mm')
+const formatLocalTime = (timestamp, timezone) => dayjs.tz(timestamp * 1000, timezone).tz('GMT').format('HH:mm');
 
 const renderChart = async () => {
   const data = await getChartData();
@@ -23,7 +23,7 @@ const renderChart = async () => {
 
   const isGreen = regularMarketPrice > previousClose;
 
-  const open = indicators.quote[0].open;
+  const { open } = indicators.quote[0];
   var options = {
     chart: {
       type: 'line',
@@ -41,24 +41,19 @@ const renderChart = async () => {
     colors: [isGreen ? '#00873c' : '#eb0f29'],
     series: [{
       name: '',
-      data: open.filter(o => o !== null)
+      data: open.filter(o => o !== null),
     }],
     xaxis: {
       type: 'datetime',
       categories: timestamp.filter(t => t !== null),
       labels: {
-        formatter: function (value) {
-          const date = dayjs.tz(value * 1000, timezone).format('HH:mm')
-          return date
-        }
-      }
+        formatter: (value) => dayjs.tz(value * 1000, timezone).format('HH:mm'),
+      },
     },
     yaxis: {
       labels: {
-        formatter: function (value) {
-          return value.toFixed(2)
-        }
-      }
+        formatter: (value) => value.toFixed(2),
+      },
     },
     annotations: {
       yaxis: [{
@@ -70,7 +65,7 @@ const renderChart = async () => {
             color: '#fff',
             background: '#7D02EB',
           },
-        }
+        },
       }],
     },
     tooltip: {
@@ -83,15 +78,15 @@ const renderChart = async () => {
     },
   }
 
-  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  const chart = new ApexCharts(document.querySelector("#chart"), options);
 
   chart.render();
 
   const mt = document.getElementById('market-time');
   const { regular: { start, end } } = currentTradingPeriod;
-  mt.innerText = `Market Hours: ${formatLocalTime(start, timezone)} - ${formatLocalTime(end, timezone)}`
+  mt.innerText = `Market Hours: ${formatLocalTime(start, timezone)} - ${formatLocalTime(end, timezone)}`;
 
   return chart;
 };
 
-module.exports = { renderChart }
+module.exports = { renderChart };
