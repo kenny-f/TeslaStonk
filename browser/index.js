@@ -10,6 +10,8 @@ const timezonePlugin = require('dayjs/plugin/timezone');
 dayjs.extend(utcPlugin)
 dayjs.extend(timezonePlugin)
 
+let chartInstance;
+
 document.getElementById('resume').onclick = () => {
   ipcRenderer.send('resume-ws')
 }
@@ -24,6 +26,10 @@ document.getElementById('reconnect').onclick = () => {
 
 ipcRenderer.on('render-data', async () => {
   await renderExchangeData();
-  await renderChart();
+  chartInstance = await renderChart();
   await renderFinancials();
+})
+
+ipcRenderer.on('window-hide', () => {
+  chartInstance.destroy();
 })

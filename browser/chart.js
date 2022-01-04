@@ -75,6 +75,8 @@ const renderChart = async () => {
   const mt = document.getElementById('market-time');
   const { regular: { start, end } } = currentTradingPeriod;
   mt.innerText = `Market Hours: ${formatLocalTime(start, timezone)} - ${formatLocalTime(end, timezone)}`
+
+  return chart;
 };
 
 module.exports = { renderChart }

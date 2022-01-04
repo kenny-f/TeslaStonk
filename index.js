@@ -73,3 +73,7 @@ mb.on('ready', () => {
 mb.on('after-show', async () => {
   mb.window.send('render-data')
 })
+
+mb.on('after-hide', async () => {
+  mb.window.send('window-hide')
+})
