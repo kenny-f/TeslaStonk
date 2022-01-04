@@ -24,6 +24,8 @@ const browserWindowOptions = {
   ...debugOptions,
 }
 
+let isWindowOpen = false;
+
 const mb = menubar({
   browserWindow: browserWindowOptions,
   icon: path.join(__dirname, 'tesla.png')
@@ -33,7 +35,13 @@ mb.on('ready', () => {
   let ws = createWs(mb.tray);
 
   globalShortcut.register('Control+Alt+T', () => {
-    mb.showWindow()
+    if(isWindowOpen) {
+      mb.hideWindow()
+      isWindowOpen = !isWindowOpen;
+    } else {
+      mb.showWindow()
+      isWindowOpen = !isWindowOpen;
+    }
   })
 
   ipcMain.on('pause-ws', () => {
