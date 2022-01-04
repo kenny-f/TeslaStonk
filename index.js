@@ -1,6 +1,6 @@
 const { menubar } = require('menubar');
 const path = require('path');
-const { ipcMain, powerMonitor } = require('electron');
+const { ipcMain, powerMonitor, globalShortcut } = require('electron');
 const { createWs } = require('./ws');
 
 const isDebug = process.env.DEBUG;
@@ -31,6 +31,10 @@ const mb = menubar({
 
 mb.on('ready', () => {
   let ws = createWs(mb.tray);
+
+  globalShortcut.register('Control+Alt+T', () => {
+    mb.showWindow()
+  })
 
   ipcMain.on('pause-ws', () => {
     ws.pause();
