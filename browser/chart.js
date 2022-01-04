@@ -29,7 +29,10 @@ const renderChart = async () => {
       type: 'line',
       animations: {
         enabled: false,
-      }
+      },
+      toolbar: {
+        show: false,
+      },
     },
     stroke: {
       width: 1,
