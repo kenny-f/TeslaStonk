@@ -24,6 +24,9 @@ const renderFinancials = async () => {
     if(f.preMarketChange < 0) {
       document.getElementById('pm-change').classList.add('negative')
       document.getElementById('pm-change-percent').classList.add('negative')
+    } else {
+      document.getElementById('pm-change').classList.add('positive')
+      document.getElementById('pm-change-percent').classList.add('positive')
     }
   }
 
