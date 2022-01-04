@@ -37,6 +37,7 @@ const renderChart = async () => {
     },
     colors: [isGreen ? '#00873c' : '#eb0f29'],
     series: [{
+      name: '',
       data: open.filter(o => o !== null)
     }],
     xaxis: {
