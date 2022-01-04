@@ -21,7 +21,15 @@ const createWs = (tray) => {
   
     const { price, changePercent } = message;
 
-    const emoji = changePercent > 0 ? '🟢' : '🔴';
+    let emoji = changePercent > 0 ? '🟢' : '🔴';
+
+    if (changePercent >= 5) {
+      emoji = '🚀'
+    }
+
+    if (changePercent <= -5) {
+      emoji = '😱'
+    }
 
     tray.setTitle(`$${price.toFixed(2)} ${emoji} ${changePercent.toFixed(2)}%`);
   };
