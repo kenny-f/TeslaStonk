@@ -33,6 +33,7 @@ const renderChart = async () => {
       toolbar: {
         show: false,
       },
+      offsetX: -6
     },
     stroke: {
       width: 1,
