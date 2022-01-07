@@ -161,3 +161,8 @@ html,
     .tab {
       min-width: 80px;
     }
+
+    .tab[data-active] {
+      cursor: default;
+      outline: 2px solid #3d6ae0;
+    }

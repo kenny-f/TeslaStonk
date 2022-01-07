@@ -16,11 +16,19 @@ let chartInstance;
 document.getElementById('news-tab').onclick = () => {
   document.getElementById('stock').style.display = 'none';
   document.getElementById('articles').style.display = 'block';
+  
+  delete document.getElementById('stock-tab').dataset.active;
+
+  document.getElementById('news-tab').dataset.active = undefined;
 }
 
 document.getElementById('stock-tab').onclick = () => {
   document.getElementById('articles').style.display = 'none';
   document.getElementById('stock').style.display = 'block';
+
+  delete document.getElementById('news-tab').dataset.active;
+
+  document.getElementById('stock-tab').dataset.active = undefined;
 }
 
 document.getElementById('resume').onclick = () => {
