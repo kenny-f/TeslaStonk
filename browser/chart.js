@@ -1,24 +1,17 @@
-const axios = require('axios');
 const ApexCharts = require('apexcharts');
-
 const dayjs = require('dayjs');
 const utcPlugin = require('dayjs/plugin/utc');
 const timezonePlugin = require('dayjs/plugin/timezone');
 
+const { getStockData } = require('./stockData');
+
 dayjs.extend(utcPlugin);
 dayjs.extend(timezonePlugin);
-
-const getChartData = async () => {
-  const { data } = await axios.get('https://query1.finance.yahoo.com/v8/finance/chart/TSLA');
-
-  return data;
-}
 
 const formatLocalTime = (timestamp, timezone) => dayjs.tz(timestamp * 1000, timezone).tz('GMT').format('HH:mm');
 
 const renderChart = async () => {
-  const data = await getChartData();
-  const { meta, timestamp, indicators } = data.chart.result[0];
+  const { chart: { meta, timestamp, indicators } } = await getStockData();
   const { currentTradingPeriod, timezone, previousClose, regularMarketPrice } = meta;
 
   const isGreen = regularMarketPrice > previousClose;
