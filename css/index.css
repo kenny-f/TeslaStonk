@@ -157,3 +157,7 @@ html,
       background-color: white;
       padding-top: 10px;
     }
+
+    .tab {
+      min-width: 80px;
+    }
