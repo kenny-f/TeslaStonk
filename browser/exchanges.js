@@ -1,5 +1,5 @@
-const axios = require('axios');
 const { numberFormat } = require('./formatters');
+const { getFinancialData } = require('./stockData');
 
 const exchanges = [
   { symbol: '%5EGSPC', name: 'S&P 500' },
@@ -8,20 +8,20 @@ const exchanges = [
   { symbol: '%5EFTSE', name: 'FTSE 100' },
 ]
 
-const getData = async () => {
-  return Promise.all(exchanges.map(({ symbol, name }) => axios
-    .get(`https://query1.finance.yahoo.com/v7/finance/quote?symbols=${symbol}&fields=regularMarketPrice,regularMarketChange,regularMarketChangePercent,currency`)
-    .then(({ data }) => ({
-      name,
-      ...data.quoteResponse.result[0]
-    }))))
-}
+const getData = async () => Promise.all(
+  exchanges.map(({ symbol, name }) =>
+    getFinancialData(symbol, 'regularMarketPrice,regularMarketChange,regularMarketChangePercent,currency')
+      .then((data) => ({
+        name,
+        ...data,
+      }))
+  ));
 
 const renderExchangeData = async () => {
   const data = await getData();
 
   const exhangesDiv = document.getElementById('exchanges')
-  
+
   while (exhangesDiv.firstChild) {
     exhangesDiv.removeChild(exhangesDiv.firstChild);
   }
