@@ -26,7 +26,10 @@ const renderChart = async () => {
       toolbar: {
         show: false,
       },
-      offsetX: -6
+      offsetX: -6,
+      zoom: {
+        enabled: false,
+      },
     },
     stroke: {
       width: 1,
