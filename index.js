@@ -44,7 +44,7 @@ mb.on('ready', () => {
 
   ipcMain.on('pause-ws', () => {
     ws.pause();
-    mb.tray.setTitle('paused');
+    mb.tray.setTitle('paused', { fontType: 'monospaced' });
   });
 
   ipcMain.on('resume-ws', () => {
@@ -55,18 +55,18 @@ mb.on('ready', () => {
     ws.terminate();
     ws = createWs(mb.tray);
   });
-  
+
   powerMonitor.on('suspend', () => {
     ws.terminate();
   })
-  
+
   powerMonitor.on('resume', () => {
     console.log('resume')
     ws = createWs(mb.tray);
   })
 });
 
-// mb.on('after-create-window', async () => { 
+// mb.on('after-create-window', async () => {
 //   console.log('after create')
 // })
 
