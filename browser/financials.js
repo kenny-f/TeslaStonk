@@ -1,4 +1,4 @@
-const axios = require('axios');
+const { getStockData } = require('./stockData');
 const { currencyFormat, rangeFormat, numberFormat } = require('./formatters');
 
 const preMarketMock = async () => {
@@ -6,22 +6,17 @@ const preMarketMock = async () => {
   return Promise.resolve(data.quoteResponse.result[0])
 }
 
-const getFinancialData = async () => {
-  const { data } = await axios.get('https://query1.finance.yahoo.com/v7/finance/quote?symbols=TSLA');
-
-  return data.quoteResponse.result[0];
-}
-
 const renderFinancials = async () => {
-  const f = await getFinancialData();
+  const { isMarketOpen, financials } = await getStockData();
+  const { preMarketPrice, preMarketChange, preMarketChangePercent } = financials;
 
-  if (f.preMarketPrice) {
+  if (!isMarketOpen && preMarketPrice) {
     document.getElementById('pm').style.display = 'block';
-    document.getElementById('pm-price').innerText = currencyFormat(f.preMarketPrice)
-    document.getElementById('pm-change').innerText = numberFormat(f.preMarketChange)
-    document.getElementById('pm-change-percent').innerText = `(${numberFormat(Number(f.preMarketChangePercent.toFixed(2)))}%)`
+    document.getElementById('pm-price').innerText = currencyFormat(preMarketPrice)
+    document.getElementById('pm-change').innerText = numberFormat(preMarketChange)
+    document.getElementById('pm-change-percent').innerText = `(${numberFormat(Number(preMarketChangePercent.toFixed(2)))}%)`
 
-    if(f.preMarketChange < 0) {
+    if(preMarketChange < 0) {
       document.getElementById('pm-change').classList.add('negative')
       document.getElementById('pm-change-percent').classList.add('negative')
     } else {
@@ -42,7 +37,7 @@ const renderFinancials = async () => {
 
   map.forEach(({ id, key, fmt }) => {
     const element = document.getElementById(id);
-    element.innerText = fmt(f[key])
+    element.innerText = fmt(financials[key])
   })
 }
 
