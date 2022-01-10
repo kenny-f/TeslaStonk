@@ -1,6 +1,12 @@
 const axios = require('axios');
 const dayjs = require('dayjs');
 
+axios.defaults.headers = {
+  'Cache-Control': 'no-cache',
+  'Pragma': 'no-cache',
+  'Expires': '0',
+};
+
 const getFinancialData = async (symbol, fields) => {
   const { data } = await axios.get(`https://query1.finance.yahoo.com/v7/finance/quote?symbols=${symbol}${fields ? `&fields=${fields}` : ''}`);
 
