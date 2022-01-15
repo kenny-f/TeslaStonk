@@ -1,16 +1,11 @@
 const { getStockData } = require('./stockData');
 const { currencyFormat, rangeFormat, numberFormat } = require('./formatters');
 
-const preMarketMock = async () => {
-  const data =  require('../mocks/preMarket.json') ;
-  return Promise.resolve(data.quoteResponse.result[0])
-}
-
 const renderFinancials = async () => {
-  const { isMarketOpen, financials } = await getStockData();
+  const { financials } = await getStockData();
   const { preMarketPrice, preMarketChange, preMarketChangePercent } = financials;
 
-  if (!isMarketOpen && preMarketPrice) {
+  if (preMarketPrice) {
     document.getElementById('pm').style.display = 'block';
     document.getElementById('pm-price').innerText = currencyFormat(preMarketPrice)
     document.getElementById('pm-change').innerText = numberFormat(preMarketChange)
@@ -22,6 +17,11 @@ const renderFinancials = async () => {
     } else {
       document.getElementById('pm-change').classList.add('positive')
       document.getElementById('pm-change-percent').classList.add('positive')
+    }
+  } else {
+    const pmDiv = document.getElementById('pm');
+    while (pmDiv.firstChild) {
+      pmDiv.removeChild(pmDiv.firstChild);
     }
   }
 

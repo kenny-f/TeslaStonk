@@ -1,11 +1,15 @@
 const axios = require('axios');
-const dayjs = require('dayjs');
 
 axios.defaults.headers = {
   'Cache-Control': 'no-cache',
   'Pragma': 'no-cache',
   'Expires': '0',
 };
+
+const preMarketMock = async () => {
+  const data =  require('../mocks/preMarket.json') ;
+  return Promise.resolve(data.quoteResponse.result[0])
+}
 
 const getFinancialData = async (symbol, fields) => {
   const { data } = await axios.get(`https://query1.finance.yahoo.com/v7/finance/quote?symbols=${symbol}${fields ? `&fields=${fields}` : ''}`);
@@ -22,11 +26,10 @@ const getChartData = async (symbol) => {
 
 const getStockData = async (symbol = 'TSLA') => {
   const financials = await getFinancialData(symbol);
+  // const financials = await preMarketMock(symbol);
   const chart = await getChartData(symbol);
-  const { meta: { currentTradingPeriod: { regular: { start } }, timezone } } = chart;
 
   return {
-    isMarketOpen: dayjs.tz(start * 1000, timezone).isBefore(dayjs.tz(dayjs(), timezone)),
     financials,
     chart,
   };
