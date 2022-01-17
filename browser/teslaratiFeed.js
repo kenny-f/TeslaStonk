@@ -36,7 +36,7 @@ const getNews = async () => {
         container.append(dom.querySelector('article'));
       })
 
-      document.getElementById('articles').replaceChildren(container);
+      document.getElementById('news').replaceChildren(container);
     })
 }
 

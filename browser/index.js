@@ -14,22 +14,49 @@ dayjs.extend(timezonePlugin)
 let chartInstance;
 
 document.getElementById('news-tab').onclick = () => {
-  document.getElementById('stock').style.display = 'none';
-  document.getElementById('articles').style.display = 'block';
-  
-  delete document.getElementById('stock-tab').dataset.active;
+  const appContentElement = document.getElementById('app-content');
 
-  document.getElementById('news-tab').dataset.active = undefined;
+  const newsRect = document
+    .getElementById('news')
+    .getBoundingClientRect();
+
+  appContentElement.scrollTo({left: newsRect.left, behavior: 'smooth' });
 }
 
 document.getElementById('stock-tab').onclick = () => {
-  document.getElementById('articles').style.display = 'none';
-  document.getElementById('stock').style.display = 'block';
+  const appContentElement = document.getElementById('app-content');
 
-  delete document.getElementById('news-tab').dataset.active;
+  const stockRect = document
+    .getElementById('stock')
+    .getBoundingClientRect();
 
-  document.getElementById('stock-tab').dataset.active = undefined;
+  appContentElement.scrollTo({left: stockRect.left, behavior: 'smooth' });
 }
+
+let observerOptions = {
+  root: document.getElementById('app-content'),
+  rootMargin: '0px',
+  threshold: 1.0
+}
+
+const observerCallback = (entries, observer) => {
+  entries.forEach(entry => {
+    const id = entry.target.id;
+
+    const tab = document.getElementById(`${id}-tab`);
+    if (entry.isIntersecting) {
+      tab.classList.add('tab-active')
+    } else {
+      tab.classList.remove('tab-active')
+    }
+
+  });
+}
+
+let observer = new IntersectionObserver(observerCallback, observerOptions);
+
+observer.observe(document.getElementById('news'))
+observer.observe(document.getElementById('stock'))
 
 document.getElementById('resume').onclick = () => {
   ipcRenderer.send('resume-ws')

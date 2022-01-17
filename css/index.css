@@ -21,7 +21,17 @@ html,
 
     .app-content {
       flex: 1 1 auto;
+      scroll-snap-type: x mandatory !important;
+      overflow-x: auto !important;
+      display: flex;
+    }
+    
+    .app-content-item {
+      flex: 0 0 calc(100vw - 20px);
       overflow-y: auto;
+      max-width: 100%;
+      max-height: 100%;
+      scroll-snap-align: start;
     }
 
     #top-container {
@@ -120,8 +130,8 @@ html,
       font-size: 14px;
     }
 
-    #articles {
-      display: none;
+    #news {
+      /* display: none; */
     }
 
     article {
@@ -162,7 +172,7 @@ html,
       min-width: 80px;
     }
 
-    .tab[data-active] {
+    .tab-active {
       cursor: default;
       outline: 2px solid #3d6ae0;
     }
