@@ -3,7 +3,7 @@ const dayjs = require('dayjs');
 const utcPlugin = require('dayjs/plugin/utc');
 const timezonePlugin = require('dayjs/plugin/timezone');
 
-const { getStockData } = require('./stockData');
+const { getChartData } = require('./stockData');
 
 dayjs.extend(utcPlugin);
 dayjs.extend(timezonePlugin);
@@ -11,7 +11,7 @@ dayjs.extend(timezonePlugin);
 const formatLocalTime = (timestamp, timezone) => dayjs.tz(timestamp * 1000, timezone).tz('GMT').format('HH:mm');
 
 const renderChart = async () => {
-  const { chart: { meta, timestamp, indicators } } = await getStockData();
+  const { meta, timestamp, indicators } = await getChartData();
   const { currentTradingPeriod, timezone, previousClose, regularMarketPrice } = meta;
 
   const isGreen = regularMarketPrice > previousClose;

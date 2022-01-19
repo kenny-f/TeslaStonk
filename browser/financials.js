@@ -1,8 +1,8 @@
-const { getStockData } = require('./stockData');
+const { getFinancialData } = require('./stockData');
 const { currencyFormat, rangeFormat, numberFormat } = require('./formatters');
 
 const renderFinancials = async () => {
-  const { financials } = await getStockData();
+  const financials = await getFinancialData('TSLA');
   const { preMarketPrice, preMarketChange, preMarketChangePercent } = financials;
 
   if (preMarketPrice) {
