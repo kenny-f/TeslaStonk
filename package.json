@@ -19,7 +19,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "menubar": "^9.1.1",
     "protobufjs": "^6.11.2",
-    "ws": "^8.4.0"
+    "ws": "^8.4.2"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.61",
