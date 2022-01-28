@@ -26,18 +26,6 @@
     "@electron-forge/maker-dmg": "^6.0.0-beta.61",
     "electron": "^16.0.8"
   },
-  "build": {
-    "appId": "com.electron.teslastonk",
-    "productName": "TeslaStonk",
-    "files": [
-      "src/**/*",
-      "tesla.png",
-      "index.html",
-      "index.js",
-      "YPricingData.proto",
-      "ws.js"
-    ]
-  },
   "config": {
     "forge": {
       "packagerConfig": {},
