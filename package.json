@@ -13,9 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apexcharts": "^3.33.1",
+    "apexcharts": "^3.33.2",
     "axios": "^0.26.0",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.10.8",
     "electron-squirrel-startup": "^1.0.0",
     "menubar": "^9.1.1",
     "protobufjs": "^6.11.2",
