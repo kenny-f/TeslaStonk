@@ -12,7 +12,7 @@ const formatLocalTime = (timestamp, timezone) => dayjs.tz(timestamp * 1000, time
 
 const renderChart = async () => {
   const { meta, timestamp, indicators } = await getChartData();
-  const { currentTradingPeriod, timezone, previousClose, regularMarketPrice } = meta;
+  const { currentTradingPeriod, exchangeTimezoneName, previousClose, regularMarketPrice } = meta;
 
   const isGreen = regularMarketPrice > previousClose;
 
@@ -44,7 +44,7 @@ const renderChart = async () => {
       type: 'datetime',
       categories: timestamp.filter(t => t !== null),
       labels: {
-        formatter: (value) => dayjs.tz(value * 1000, timezone).format('HH:mm'),
+        formatter: (value) => dayjs.tz(value * 1000, exchangeTimezoneName).format('HH:mm'),
       },
     },
     yaxis: {
@@ -81,7 +81,7 @@ const renderChart = async () => {
 
   const mt = document.getElementById('market-time');
   const { regular: { start, end } } = currentTradingPeriod;
-  mt.innerText = `Market Hours: ${formatLocalTime(start, timezone)} - ${formatLocalTime(end, timezone)}`;
+  mt.innerText = `Market Hours: ${formatLocalTime(start, exchangeTimezoneName)} - ${formatLocalTime(end, exchangeTimezoneName)}`;
 
   return chart;
 };
