@@ -8,7 +8,10 @@ const { getChartData } = require('./stockData');
 dayjs.extend(utcPlugin);
 dayjs.extend(timezonePlugin);
 
-const formatLocalTime = (timestamp, timezone) => dayjs.tz(timestamp * 1000, timezone).tz('GMT').format('HH:mm');
+const formatLocalTime = (timestamp, timezone) => dayjs
+  .tz(timestamp * 1000, timezone)
+  .tz(dayjs.tz.guess())
+  .format('HH:mm');
 
 const renderChart = async () => {
   const { meta, timestamp, indicators } = await getChartData();
