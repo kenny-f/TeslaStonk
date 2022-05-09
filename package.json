@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apexcharts": "^3.35.0",
+    "apexcharts": "^3.35.2",
     "axios": "^0.27.2",
     "dayjs": "^1.11.1",
     "electron-squirrel-startup": "^1.0.0",
