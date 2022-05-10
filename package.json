@@ -15,7 +15,7 @@
   "dependencies": {
     "apexcharts": "^3.35.2",
     "axios": "^0.27.2",
-    "dayjs": "^1.11.1",
+    "dayjs": "^1.11.2",
     "electron-squirrel-startup": "^1.0.0",
     "menubar": "^9.2.0",
     "protobufjs": "^6.11.2",
