@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.63",
-    "@electron-forge/maker-dmg": "6.0.0-beta.63",
+    "@electron-forge/maker-dmg": "6.0.0-beta.64",
     "electron": "^17.1.2"
   },
   "config": {
