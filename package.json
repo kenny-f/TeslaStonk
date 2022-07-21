@@ -18,7 +18,7 @@
     "dayjs": "^1.11.4",
     "electron-squirrel-startup": "^1.0.0",
     "menubar": "^9.2.1",
-    "protobufjs": "^6.11.3",
+    "protobufjs": "^7.0.0",
     "ws": "^8.8.1"
   },
   "devDependencies": {
