@@ -33,7 +33,7 @@ const createWs = (tray) => {
       emoji = '😱'
     }
 
-    setTitle(`$${price.toFixed(2)} ${emoji} ${changePercent.toFixed(2)}%`);
+    setTitle(`$${price.toFixed(2)} (${(price*3).toFixed(2)}) ${emoji} ${changePercent.toFixed(2)}%`);
   };
 
   return ws;
