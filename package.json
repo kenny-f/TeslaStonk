@@ -24,7 +24,7 @@
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.65",
     "@electron-forge/maker-dmg": "6.0.0-beta.65",
-    "electron": "^20.1.1"
+    "electron": "^20.2.0"
   },
   "config": {
     "forge": {
