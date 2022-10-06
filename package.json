@@ -17,7 +17,7 @@
     "axios": "^0.27.2",
     "dayjs": "^1.11.5",
     "electron-squirrel-startup": "^1.0.0",
-    "menubar": "^9.2.2",
+    "menubar": "^9.2.3",
     "protobufjs": "^6.11.3",
     "ws": "^8.8.1"
   },
