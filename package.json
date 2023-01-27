@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "apexcharts": "^3.36.3",
-    "axios": "^1.2.2",
+    "axios": "^1.2.5",
     "dayjs": "^1.11.7",
     "electron-squirrel-startup": "^1.0.0",
     "menubar": "^9.2.3",
