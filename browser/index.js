@@ -12,16 +12,6 @@ dayjs.extend(timezonePlugin)
 
 let chartInstance;
 
-document.getElementById('stock-tab').onclick = () => {
-  const appContentElement = document.getElementById('app-content');
-
-  const stockRect = document
-    .getElementById('stock')
-    .getBoundingClientRect();
-
-  appContentElement.scrollTo({left: stockRect.left, behavior: 'smooth' });
-}
-
 document.getElementById('resume').onclick = () => {
   ipcRenderer.send('resume-ws')
 }
